@@ -10,14 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 20_240_214_182_556) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_14_193920) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
 
-  create_table 'api_accesses', force: :cascade do |t|
-    t.string 'email'
-    t.text 'access_token'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "api_accesses", force: :cascade do |t|
+    t.string "email"
+    t.text "access_token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
+
+  create_table "guesses", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.float "lat"
+    t.float "lng"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_guesses_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "name"
+    t.boolean "winner"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "guesses", "users"
 end
