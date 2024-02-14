@@ -7,3 +7,5 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+ApiAccess.create(email: 'demo@treasurehunt.com', access_token: SecureRandom.urlsafe_base64(nil, false))
