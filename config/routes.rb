@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  resources :user
+  resources :users, only: %i[create show]
+  resources :guesses, only: [:create]
 end
