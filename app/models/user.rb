@@ -3,16 +3,17 @@ class User < ApplicationRecord
 
   validates_presence_of :name, :email
 
-  def set_as_winner!
+  def winner!(guess)
     return if winner
 
     update(winner: true)
-    notify_user
+    notify_win(guess)
   end
 
   private
 
-  def notify_user
+  def notify_win(guess)
+    UserMailer.notify_winner(self, guess).deliver_now
   end
 
   def set_access_token

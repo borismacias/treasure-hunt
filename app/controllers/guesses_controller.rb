@@ -15,7 +15,7 @@ class GuessesController < ApplicationController
   def check_winner(guess)
     guess.check_winner
     guess.reload
-    user.set_as_winner! if guess.distance < 1000
+    user.winner! if guess.distance < 1000
   end
 
   def guess_params
