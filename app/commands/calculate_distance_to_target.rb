@@ -18,11 +18,11 @@ class CalculateDistanceToTarget
     end
 
     def target_lat
-      Rails.application.credentials.target_lat
+      ENV['TARGET_LAT']
     end
 
     def target_lng
-      Rails.application.credentials.target_lng
+      ENV['TARGET_LNG']
     end
   end
 end
