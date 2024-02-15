@@ -7,9 +7,28 @@ paths:
   "/guesses":
     post:
       summary: create guess
+      parameters:
+      - name: access-token
+        in: header
+        schema:
+          type: string
       responses:
         '200':
           description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - lat
+              - lng
+              properties:
+                lat:
+                  type: number
+                lng:
+                  type: number
+        required: true
   "/users":
     post:
       summary: create user
