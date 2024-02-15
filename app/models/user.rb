@@ -19,7 +19,7 @@ class User < ApplicationRecord
   private
 
   def notify_win(guess)
-    UserMailer.notify_winner(self, guess).deliver_now
+    UserMailer.notify_winner(self, guess).deliver_later
   end
 
   def set_access_token
