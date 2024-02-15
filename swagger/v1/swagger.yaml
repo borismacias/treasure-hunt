@@ -68,12 +68,22 @@ paths:
         type: string
     get:
       summary: show user
+      parameters:
+      - name: access-token
+        in: header
+        schema:
+          type: string
       responses:
         '200':
           description: successful
   "/winners":
     get:
       summary: show winners
+      parameters:
+      - name: access-token
+        in: header
+        schema:
+          type: string
       responses:
         '200':
           description: successful

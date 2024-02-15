@@ -50,6 +50,8 @@ RSpec.describe 'users', type: :request do
     parameter name: 'id', in: :path, type: :string, description: 'id'
 
     get('show user') do
+      parameter name: 'access-token', in: :header, type: :string
+
       response(200, 'successful') do
         let(:id) { '123' }
 
@@ -68,6 +70,8 @@ RSpec.describe 'users', type: :request do
   path '/winners' do
     get('show winners') do
       response(200, 'successful') do
+        parameter name: 'access-token', in: :header, type: :string
+
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {
