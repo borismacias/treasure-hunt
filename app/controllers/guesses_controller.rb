@@ -5,12 +5,18 @@ class GuessesController < ApplicationController
     if guess.errors.present?
       render json: { errors: guess.errors.full_messages.to_sentence }, status: 422
     else
-      guess.check_winner
+      check_winner(guess)
       render json: { id: guess.id }, status: 201
     end
   end
 
   private
+
+  def check_winner(guess)
+    guess.check_winner
+    guess.reload
+    user.set_as_winner! if guess.distance < 1000
+  end
 
   def guess_params
     params.permit(:lat, :lng).merge(user_id: @user.id)
