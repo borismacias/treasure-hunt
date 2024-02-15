@@ -8,4 +8,4 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-ApiAccess.create(email: 'demo@treasurehunt.com', access_token: SecureRandom.urlsafe_base64(nil, false))
+User.create(name: 'Demo', email: 'demo@treasurehunt.com')

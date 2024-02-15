@@ -1,2 +1,0 @@
-class ApiAccess < ApplicationRecord
-end

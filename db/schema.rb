@@ -14,13 +14,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_14_193920) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "api_accesses", force: :cascade do |t|
-    t.string "email"
-    t.text "access_token"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "guesses", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.float "lat"
@@ -33,7 +26,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_14_193920) do
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "name"
-    t.boolean "winner"
+    t.boolean "winner", default: false
+    t.text "access_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
