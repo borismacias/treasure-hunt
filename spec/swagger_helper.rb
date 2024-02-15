@@ -24,14 +24,11 @@ RSpec.configure do |config|
       paths: {},
       servers: [
         {
-          url: 'https://{defaultHost}',
-          variables: {
-            defaultHost: {
-              default: 'www.example.com'
-            }
-          }
+          url: 'http://localhost:3000'
         }
-      ]
+      ],
+      consumes: ['application/json'],
+      produces: ['application/json']
     }
   }
 

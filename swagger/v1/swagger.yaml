@@ -13,9 +13,32 @@ paths:
   "/users":
     post:
       summary: create user
+      parameters:
+      - name: access-token
+        in: header
+        schema:
+          type: string
       responses:
-        '200':
-          description: successful
+        '201':
+          description: created
+        '401':
+          description: unauthorized
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - email
+              - name
+              properties:
+                email:
+                  type: string
+                name:
+                  type: string
+        required: true
   "/users/{id}":
     parameters:
     - name: id
@@ -30,7 +53,8 @@ paths:
         '200':
           description: successful
 servers:
-- url: https://{defaultHost}
-  variables:
-    defaultHost:
-      default: www.example.com
+- url: http://localhost:3000
+consumes:
+- application/json
+produces:
+- application/json
