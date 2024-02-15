@@ -62,11 +62,21 @@ RSpec.describe 'users', type: :request do
         end
         run_test!
       end
+    end
+  end
 
-      # response '401', 'unauthorized' do
-      #   let(:access_token) { nil }
-      #   run_test!
-      # ends
+  path '/winners' do
+    get('show winners') do
+      response(200, 'successful') do
+        after do |example|
+          example.metadata[:response][:content] = {
+            'application/json' => {
+              example: JSON.parse(response.body, symbolize_names: true)
+            }
+          }
+        end
+        run_test!
+      end
     end
   end
 end

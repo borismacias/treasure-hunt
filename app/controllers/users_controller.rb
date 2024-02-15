@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   def create
     user = User.create(user_params)
@@ -10,7 +12,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    render json: @user.attributes.to_json
+    render json: @user.serialize
+  end
+
+  def winners
+    render json: User.winners.map(&:serialize)
   end
 
   private
