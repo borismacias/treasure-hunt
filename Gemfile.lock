@@ -95,6 +95,8 @@ GEM
     diff-lcs (1.5.1)
     drb (2.2.0)
       ruby2_keywords
+    email_validator (2.2.4)
+      activemodel
     erubi (1.12.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -283,6 +285,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap
   debug
+  email_validator
   pg (~> 1.1)
   pry
   pry-byebug

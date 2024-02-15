@@ -2,6 +2,7 @@ class User < ApplicationRecord
   before_create :set_access_token
   has_many :guesses
   validates_presence_of :name, :email
+  validates :email, uniqueness: true, email: true
 
   enum :role, { player: 0, admin: 100 }
 
