@@ -8,4 +8,4 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-User.create(name: 'Demo', email: 'demo@treasurehunt.com')
+User.create(name: 'Demo', email: 'demo@treasurehunt.com', role: :admin)

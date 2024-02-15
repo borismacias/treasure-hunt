@@ -3,6 +3,8 @@ class User < ApplicationRecord
   has_many :guesses
   validates_presence_of :name, :email
 
+  enum :role, { player: 0, admin: 100 }
+
   scope :winners, -> { includes(:guesses).where(winner: true).order(Arel.sql('guesses.distance_to_target ASC')) }
 
   def winner!(guess)

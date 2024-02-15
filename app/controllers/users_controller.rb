@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+  before_action :authorize_user, only: [:create]
+
   def create
     user = User.create(user_params)
     if user.errors.present?
@@ -20,6 +22,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def authorize_user
+    head(403) unless @user.admin?
+  end
 
   def user_params
     params.permit(:name, :email)
