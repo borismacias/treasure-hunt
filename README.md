@@ -1,24 +1,8 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+0. bundle install
+1. rails db:create
+2. rails db:migrate
+3. rails db:seed
+4. With rails console, get the access token that was generated for the demo user
+5. Send the access token as the header 'access-token' to be able to use the api
