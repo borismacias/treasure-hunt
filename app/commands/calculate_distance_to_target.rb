@@ -3,6 +3,8 @@ class CalculateDistanceToTarget
     EARTH_RADIUS_METERS = 6371 * 1000
 
     def for(lat:, lng:) # rubocop:disable Metrics/AbcSize
+      lat = lat.to_f
+      lng = lng.to_f
       rad_per_deg = Math::PI / 180
 
       dlat_rad = (lat - target_lat) * rad_per_deg
@@ -18,11 +20,11 @@ class CalculateDistanceToTarget
     end
 
     def target_lat
-      ENV['TARGET_LAT']
+      ENV['TARGET_LAT'].to_f
     end
 
     def target_lng
-      ENV['TARGET_LNG']
+      ENV['TARGET_LNG'].to_f
     end
   end
 end
